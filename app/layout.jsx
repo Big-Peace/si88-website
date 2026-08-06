@@ -1,6 +1,7 @@
 // app/layout.jsx
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 export const metadata = {
   title: "SI88 Limited - Global Trading & Brand Development",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         <Navbar />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
