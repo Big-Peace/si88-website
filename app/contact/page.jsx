@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Link from 'next/link';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -30,8 +29,6 @@ export default function ContactPage() {
     setError('');
     
     try {
-      // For now, just simulate a successful submission
-      // In production, you would send this to an API endpoint
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubmitted(true);
       setFormData({
@@ -74,7 +71,6 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-white pt-20">
-      {/* Hero Section */}
       <section className="bg-white py-20 md:py-28 border-b border-gray-100">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -88,21 +84,19 @@ export default function ContactPage() {
               <span className="text-gold text-sm font-semibold tracking-wider uppercase">Get In Touch</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-dark leading-tight">
-              Let's <span className="font-bold text-gold">Connect</span>
+              Let&apos;s <span className="font-bold text-gold">Connect</span>
             </h1>
             <p className="text-gray-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
               Reach out to our team for partnerships, inquiries, or to learn more about 
-              our services. We're here to help.
+              our services. We&apos;re here to help.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Content */}
       <section className="bg-white py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -136,7 +130,6 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Office Hours */}
               <div className="bg-lightGray p-6 rounded-sm border-l-4 border-gold">
                 <h4 className="font-semibold text-dark mb-2">Office Hours</h4>
                 <p className="text-gray-600 text-sm">
@@ -147,7 +140,6 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -162,7 +154,7 @@ export default function ContactPage() {
                     <div className="text-6xl mb-4">✅</div>
                     <h4 className="text-2xl font-semibold text-dark mb-2">Message Sent!</h4>
                     <p className="text-gray-600">
-                      Thank you for reaching out. We'll get back to you within 24 hours.
+                      Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
@@ -273,7 +265,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section - Future Enhancement */}
       <section className="bg-lightGray py-16 border-t border-gray-200">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -301,7 +292,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section className="bg-dark text-white py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <motion.div
@@ -313,7 +303,7 @@ export default function ContactPage() {
               Quick <span className="font-bold text-gold">Response</span> Guaranteed
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-              We'll get back to you within 24 hours. For urgent matters, reach us via WhatsApp.
+              We&apos;ll get back to you within 24 hours. For urgent matters, reach us via WhatsApp.
             </p>
             <a 
               href="https://wa.me/2348000000000?text=Hello%20SI88%20Limited"
@@ -327,7 +317,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-dark/95 text-white py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <p className="text-gray-400 text-sm">

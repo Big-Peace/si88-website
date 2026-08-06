@@ -58,7 +58,6 @@ export default function BrandsPage() {
 
   return (
     <main className="min-h-screen bg-white pt-20">
-      {/* Hero Section - Brand Showcase */}
       <section className="relative bg-white py-24 border-b border-gray-100 overflow-hidden">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -98,7 +97,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Brand Relationship */}
       <section className="bg-lightGray py-12 border-b border-gray-100">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -113,7 +111,7 @@ export default function BrandsPage() {
               <span className="text-gold font-bold text-2xl">SI88 Limited</span>
             </div>
             <p className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed">
-              Si Confidenci is one of SI88 Limited's flagship brand achievements, 
+              Si Confidenci is one of SI88 Limited&apos;s flagship brand achievements, 
               developed in the Philippines as part of our commitment to creating 
               internationally competitive consumer brands. It represents our belief 
               that lasting value comes from creating brands that customers trust and admire.
@@ -122,7 +120,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Brand Story Section */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
@@ -131,7 +128,6 @@ export default function BrandsPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {/* Brand Image Placeholder */}
               <div className="bg-lightGray w-full aspect-[4/3] rounded-sm border-2 border-gold/30 flex items-center justify-center relative overflow-hidden">
                 <div className="text-center text-gray-400">
                   <div className="text-7xl mb-4">👓</div>
@@ -153,7 +149,7 @@ export default function BrandsPage() {
                 The <span className="font-bold text-gold">Story</span> Behind Si Confidenci
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Si Confidenci is SI88 Limited's flagship luxury eyewear brand, conceived and 
+                Si Confidenci is SI88 Limited&apos;s flagship luxury eyewear brand, conceived and 
                 developed in the Philippines with a vision of becoming an internationally 
                 recognized premium fashion label.
               </p>
@@ -169,8 +165,8 @@ export default function BrandsPage() {
               </p>
               <div className="pt-4">
                 <div className="text-gold font-medium italic text-lg">
-                  "The brand represents our belief that lasting value comes not only from 
-                  facilitating trade, but also from creating brands that customers trust and admire."
+                  &quot;The brand represents our belief that lasting value comes not only from 
+                  facilitating trade, but also from creating brands that customers trust and admire.&quot;
                 </div>
               </div>
             </motion.div>
@@ -178,7 +174,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Brand Values Section */}
       <section className="bg-lightGray py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -214,7 +209,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Global Expansion Section */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -251,7 +245,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Future Divisions Section */}
       <section className="bg-lightGray py-20 border-t border-gray-200">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -266,7 +259,7 @@ export default function BrandsPage() {
                 Building a <span className="font-bold text-gold">Global Group</span>
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-                SI88 Limited's vision is to become a diversified holding company 
+                SI88 Limited&apos;s vision is to become a diversified holding company 
                 with specialized divisions across key industries.
               </p>
               <div className="mt-4 inline-block bg-gold/10 border border-gold/20 px-6 py-2 rounded-full">
@@ -298,7 +291,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section className="bg-dark text-white py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <motion.div
@@ -323,7 +315,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-dark/95 text-white py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <p className="text-gray-400 text-sm">

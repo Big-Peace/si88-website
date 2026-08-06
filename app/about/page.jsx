@@ -15,7 +15,6 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-white pt-20">
-      {/* Hero Section - About */}
       <section className="relative bg-white py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -36,7 +35,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Company Story Section */}
       <section className="bg-lightGray py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -69,7 +67,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Vision & Mission Section */}
       <section className="bg-white py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -104,7 +101,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values Section */}
       <section className="bg-lightGray py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -139,7 +135,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CEO & Founder Section */}
       <section className="bg-white py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-5xl mx-auto">
@@ -149,7 +144,6 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start"
             >
-              {/* Founder Image Placeholder */}
               <div className="md:col-span-1">
                 <div className="bg-lightGray w-full aspect-square rounded-sm border-2 border-gold/30 flex items-center justify-center">
                   <div className="text-center text-gray-400">
@@ -160,7 +154,6 @@ export default function AboutPage() {
                 </div>
               </div>
               
-              {/* Founder Info */}
               <div className="md:col-span-2">
                 <div className="w-20 h-0.5 bg-gold mb-6"></div>
                 <h2 className="text-3xl md:text-4xl font-light text-dark mb-2">
@@ -187,7 +180,6 @@ export default function AboutPage() {
                   </p>
                 </div>
                 
-                {/* Leadership Principles */}
                 <div className="mt-8 grid grid-cols-2 gap-3">
                   {[
                     'Integrity above everything',
@@ -209,7 +201,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section className="bg-dark text-white py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <motion.div
@@ -232,7 +223,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-dark/90 text-white py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <p className="text-gray-400 text-sm">

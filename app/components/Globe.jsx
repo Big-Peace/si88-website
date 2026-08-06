@@ -1,30 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function Globe() {
   const containerRef = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-    return () => setIsMounted(false);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-    
-    // Clean up any existing canvas
-    if (containerRef.current) {
-      containerRef.current.innerHTML = '';
-    }
-
     const loadThree = async () => {
       try {
         const THREE = await import('three');
         const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
         
-        // Setup scene
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
         camera.position.set(0, 0, 5);
@@ -35,9 +21,12 @@ export default function Globe() {
         });
         renderer.setSize(600, 600);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        containerRef.current.appendChild(renderer.domElement);
         
-        // Lights
+        if (containerRef.current) {
+          containerRef.current.innerHTML = '';
+          containerRef.current.appendChild(renderer.domElement);
+        }
+        
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
         
@@ -49,7 +38,6 @@ export default function Globe() {
         pointLight2.position.set(-10, -10, -10);
         scene.add(pointLight2);
         
-        // Globe with wireframe
         const geometry = new THREE.SphereGeometry(1.8, 48, 48);
         const material = new THREE.MeshStandardMaterial({
           color: 0xD4AF37,
@@ -62,7 +50,6 @@ export default function Globe() {
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
         
-        // Particles
         const particlesGeometry = new THREE.BufferGeometry();
         const count = 800;
         const positions = new Float32Array(count * 3);
@@ -85,14 +72,12 @@ export default function Globe() {
         const particles = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particles);
         
-        // Controls
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableZoom = false;
         controls.enablePan = false;
         controls.rotateSpeed = 0.5;
         controls.autoRotate = false;
         
-        // Animation
         let animationId;
         const animate = () => {
           animationId = requestAnimationFrame(animate);
@@ -102,7 +87,6 @@ export default function Globe() {
         };
         animate();
         
-        // Cleanup function
         return () => {
           cancelAnimationFrame(animationId);
           renderer.dispose();
@@ -124,7 +108,7 @@ export default function Globe() {
         if (cleanupFn) cleanupFn();
       });
     };
-  }, [isMounted]);
+  }, []); // <-- Empty dependency array, no setState calls
 
   return (
     <div 

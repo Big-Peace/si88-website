@@ -91,12 +91,8 @@ export default function ServicesPage() {
     }
   ];
 
-  // Group services by category for better organization
-  const categories = ['Trade', 'Procurement', 'Operations', 'Products', 'Partnerships'];
-
   return (
     <main className="min-h-screen bg-white pt-20">
-      {/* Hero Section - Professional */}
       <section className="relative bg-white py-24 border-b border-gray-100">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -135,10 +131,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid - Professional Layout */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
-          {/* Category Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -154,7 +148,6 @@ export default function ServicesPage() {
             </p>
           </motion.div>
 
-          {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
@@ -164,32 +157,26 @@ export default function ServicesPage() {
                 transition={{ duration: 0.5, delay: index * 0.04 }}
                 className="group relative bg-white border border-gray-200 rounded-sm p-8 hover:border-gold hover:shadow-xl transition-all duration-300"
               >
-                {/* Category Tag */}
                 <div className="absolute top-4 right-4">
                   <span className="text-xs font-medium text-gray-400 bg-gray-50 px-3 py-1 rounded-full">
                     {service.category}
                   </span>
                 </div>
 
-                {/* Service Number */}
                 <div className="text-5xl font-light text-gray-100 group-hover:text-gold/20 transition-colors duration-300">
                   {service.id}
                 </div>
 
-                {/* Icon */}
                 <div className="text-3xl mb-4 mt-2">{service.icon}</div>
 
-                {/* Name */}
                 <h3 className="text-lg font-semibold text-dark mb-3 group-hover:text-gold transition-colors duration-300">
                   {service.name}
                 </h3>
 
-                {/* Description */}
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {service.description}
                 </p>
 
-                {/* Gold Accent Line - Appears on Hover */}
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></div>
               </motion.div>
             ))}
@@ -197,7 +184,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Why Choose Us - Premium Section */}
       <section className="bg-lightGray py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
@@ -242,7 +228,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="bg-dark text-white py-20">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <motion.div
@@ -255,7 +240,7 @@ export default function ServicesPage() {
               Ready to <span className="font-bold text-gold">Partner</span> With Us?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-              Let's discuss how our comprehensive services can support your business objectives.
+              Let&apos;s discuss how our comprehensive services can support your business objectives.
             </p>
             <Link href="/contact">
               <button className="px-12 py-4 bg-gold text-dark font-semibold rounded-sm hover:bg-gold/90 transition-all tracking-wide">
@@ -266,7 +251,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-dark/95 text-white py-8 border-t border-gray-800">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
           <p className="text-gray-400 text-sm">
