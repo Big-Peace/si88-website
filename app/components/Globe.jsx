@@ -11,6 +11,13 @@ export default function Globe() {
         const THREE = await import('three');
         const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
         
+        // Get container size
+        const container = containerRef.current;
+        if (!container) return;
+        
+        const width = container.clientWidth || 400;
+        const height = Math.min(width, 600);
+        
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
         camera.position.set(0, 0, 5);
@@ -19,13 +26,11 @@ export default function Globe() {
           antialias: true, 
           alpha: true 
         });
-        renderer.setSize(600, 600);
+        renderer.setSize(width, height);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         
-        if (containerRef.current) {
-          containerRef.current.innerHTML = '';
-          containerRef.current.appendChild(renderer.domElement);
-        }
+        container.innerHTML = '';
+        container.appendChild(renderer.domElement);
         
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
@@ -38,7 +43,10 @@ export default function Globe() {
         pointLight2.position.set(-10, -10, -10);
         scene.add(pointLight2);
         
-        const geometry = new THREE.SphereGeometry(1.8, 48, 48);
+        // Responsive sphere size
+        const sphereRadius = Math.min(width / 5, 1.8);
+        
+        const geometry = new THREE.SphereGeometry(sphereRadius, 48, 48);
         const material = new THREE.MeshStandardMaterial({
           color: 0xD4AF37,
           wireframe: true,
@@ -50,21 +58,22 @@ export default function Globe() {
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
         
+        // Responsive particles
         const particlesGeometry = new THREE.BufferGeometry();
-        const count = 800;
+        const count = Math.min(800, Math.floor(width * 2));
         const positions = new Float32Array(count * 3);
+        const particleRadius = sphereRadius * 1.4;
         for (let i = 0; i < count * 3; i++) {
-          const radius = 2.5;
           const theta = Math.random() * Math.PI * 2;
           const phi = Math.acos((Math.random() * 2) - 1);
-          positions[i] = Math.sin(phi) * Math.cos(theta) * radius;
-          positions[++i] = Math.sin(phi) * Math.sin(theta) * radius;
-          positions[++i] = Math.cos(phi) * radius;
+          positions[i] = Math.sin(phi) * Math.cos(theta) * particleRadius;
+          positions[++i] = Math.sin(phi) * Math.sin(theta) * particleRadius;
+          positions[++i] = Math.cos(phi) * particleRadius;
         }
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         const particlesMaterial = new THREE.PointsMaterial({
           color: 0xD4AF37,
-          size: 0.03,
+          size: Math.max(0.02, sphereRadius * 0.015),
           transparent: true,
           opacity: 0.8,
           blending: THREE.AdditiveBlending,
@@ -87,17 +96,29 @@ export default function Globe() {
         };
         animate();
         
+        const handleResize = () => {
+          if (!container) return;
+          const newWidth = container.clientWidth || 400;
+          const newHeight = Math.min(newWidth, 600);
+          camera.aspect = 1;
+          camera.updateProjectionMatrix();
+          renderer.setSize(newWidth, newHeight);
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
         return () => {
+          window.removeEventListener('resize', handleResize);
           cancelAnimationFrame(animationId);
           renderer.dispose();
-          if (containerRef.current) {
-            containerRef.current.innerHTML = '';
+          if (container) {
+            container.innerHTML = '';
           }
         };
       } catch (error) {
         console.error('Error loading 3D:', error);
         if (containerRef.current) {
-          containerRef.current.innerHTML = '<div class="text-gold text-center">3D Globe Load Failed</div>';
+          containerRef.current.innerHTML = '<div class="text-gold text-center p-4">3D Globe Load Failed</div>';
         }
       }
     };
@@ -108,12 +129,12 @@ export default function Globe() {
         if (cleanupFn) cleanupFn();
       });
     };
-  }, []); // <-- Empty dependency array, no setState calls
+  }, []);
 
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-[600px] md:h-[700px] flex items-center justify-center"
+      className="w-full aspect-square max-w-[400px] md:max-w-[500px] lg:max-w-full mx-auto"
     />
   );
 }

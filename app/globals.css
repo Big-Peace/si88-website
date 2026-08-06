@@ -7,14 +7,53 @@
   --foreground: #1A1A1A;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Mobile-first container */
+.container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 
 /* Gold accent styling */
@@ -30,11 +69,48 @@ html {
   background-color: #D4AF37;
 }
 
-/* Custom container for white theme */
-.white-section {
-  background: #FFFFFF;
+/* Responsive typography */
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
-.light-gray-section {
-  background: #F8F8F8;
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+p {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+}
+
+/* Touch-friendly buttons */
+button, 
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus (iOS) */
+input, 
+select, 
+textarea {
+  font-size: 16px !important;
+}
+
+/* Smooth images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Better scrolling on mobile */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
