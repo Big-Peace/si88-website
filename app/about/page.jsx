@@ -14,7 +14,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white pt-20">
       {/* Hero Section - About */}
       <section className="relative bg-white py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
@@ -82,7 +82,7 @@ export default function AboutPage() {
               <div className="text-gold text-4xl mb-4">👁️</div>
               <h3 className="text-2xl font-semibold text-dark mb-4">Our Vision</h3>
               <p className="text-gray-700 leading-relaxed">
-                To become one of Africa's most respected international trading and brand 
+                To become one of Africa&apos;s most respected international trading and brand 
                 development companies, recognized for integrity, innovation, and enduring 
                 partnerships.
               </p>
@@ -181,9 +181,9 @@ export default function AboutPage() {
                     disciplined execution, innovation, and strategic partnerships.
                   </p>
                   <p className="text-gold font-medium italic">
-                    "Great companies are not built by chasing opportunities—they are built by 
+                    &quot;Great companies are not built by chasing opportunities—they are built by 
                     earning trust, solving meaningful problems, and creating value that outlives 
-                    their founders."
+                    their founders.&quot;
                   </p>
                 </div>
                 
@@ -221,7 +221,7 @@ export default function AboutPage() {
               Ready to Partner With Us?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-              Let's connect and explore how SI88 Limited can help your business grow.
+              Let&apos;s connect and explore how SI88 Limited can help your business grow.
             </p>
             <Link href="/contact">
               <button className="px-10 py-4 bg-gold text-dark font-semibold rounded-sm hover:bg-opacity-80 transition-all">
