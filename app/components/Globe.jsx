@@ -9,7 +9,7 @@ export default function Globe() {
     const container = containerRef.current;
     if (!container) return;
 
-    let scene, camera, renderer, globe, particles, controls;
+    let scene, camera, renderer, globe, controls;
     let animationId;
 
     const init = async () => {

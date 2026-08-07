@@ -6,16 +6,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(true); // Changed to true by default
+  const [isScrolled, setIsScrolled] = useState(true); // Start with true
 
   useEffect(() => {
+    // No setState call needed here — just the scroll listener
     const handleScroll = () => {
-      // Always show navbar background
-      setIsScrolled(true);
+      // We don't need to set state here since it's always true
+      // Just keep the background always visible
     };
-    
-    // Set background on load
-    setIsScrolled(true);
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -40,13 +38,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        isScrolled ? 'bg-black/95 backdrop-blur-[14px] border-b border-gold/18 py-3' : 'bg-black/95 backdrop-blur-[14px] border-b border-gold/18 py-3'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 bg-black/95 backdrop-blur-[14px] border-b border-gold/18 py-3`}
     >
       <div className="container-premium">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <div className="flex flex-col leading-none">
               <span className="font-['Fraunces',serif] text-[1.6rem] tracking-[0.02em] text-white">
@@ -56,7 +51,6 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-8 lg:gap-10 list-none">
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -70,12 +64,10 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
           <Link href="/contact" className="hidden md:block border border-gold text-gold px-5 py-2.5 text-[0.78rem] tracking-[0.08em] transition-all duration-300 hover:bg-gold hover:text-black">
             Partner With Us
           </Link>
 
-          {/* Burger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden flex flex-col gap-1.5 cursor-pointer bg-transparent border-0 z-50"
@@ -87,7 +79,6 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div

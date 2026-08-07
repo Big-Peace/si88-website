@@ -20,12 +20,15 @@ export default function Product3D() {
         const width = container.clientWidth || 600;
         const height = container.clientHeight || 500;
 
+        // Scene
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0x0a0a0b);
 
+        // Camera
         camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
         camera.position.set(0, 0.5, 4.5);
 
+        // Renderer
         renderer = new THREE.WebGLRenderer({
           antialias: true,
           alpha: true,
@@ -35,7 +38,7 @@ export default function Product3D() {
         renderer.setClearColor(0x0a0a0b, 1);
         container.appendChild(renderer.domElement);
 
-        // Lights
+        // === LIGHTS ===
         const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
         scene.add(ambientLight);
 
@@ -51,16 +54,11 @@ export default function Product3D() {
         pointLight.position.set(0, 0, 2);
         scene.add(pointLight);
 
+        // === GROUP ===
         group = new THREE.Group();
         scene.add(group);
 
-        // Glasses frame - gold/black
-        const frameMat = new THREE.MeshPhysicalMaterial({
-          color: 0x1a1a1a,
-          metalness: 0.7,
-          roughness: 0.3,
-        });
-
+        // === MATERIALS ===
         const goldMat = new THREE.MeshPhysicalMaterial({
           color: 0xc6a15b,
           metalness: 0.9,
@@ -75,6 +73,26 @@ export default function Product3D() {
           opacity: 0.5,
           envMapIntensity: 1,
         });
+
+        const armMat = new THREE.MeshPhysicalMaterial({
+          color: 0x2a2a2a,
+          metalness: 0.6,
+          roughness: 0.4,
+        });
+
+        const accentMat = new THREE.MeshPhysicalMaterial({
+          color: 0xc6a15b,
+          metalness: 0.8,
+          roughness: 0.2,
+        });
+
+        const padMat = new THREE.MeshPhysicalMaterial({
+          color: 0xc6a15b,
+          metalness: 0.7,
+          roughness: 0.3,
+        });
+
+        // === GLASSES MODEL ===
 
         // Left lens
         const leftLens = new THREE.Mesh(new THREE.SphereGeometry(0.85, 32, 32), lensMat);
@@ -96,6 +114,7 @@ export default function Product3D() {
         leftRing.scale.set(1, 0.9, 0.6);
         group.add(leftRing);
 
+        // Right frame ring
         const rightRing = new THREE.Mesh(ringGeo, goldMat);
         rightRing.position.set(1.2, 0, 0);
         rightRing.rotation.x = Math.PI / 2;
@@ -112,54 +131,41 @@ export default function Product3D() {
         bridgeDetail.position.set(0, 0.18, 0.15);
         group.add(bridgeDetail);
 
-        // Temple arms
-        const armMat = new THREE.MeshPhysicalMaterial({
-          color: 0x2a2a2a,
-          metalness: 0.6,
-          roughness: 0.4,
-        });
-
+        // Left temple arm
         const leftArm = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.06, 0.06), armMat);
         leftArm.position.set(-1.9, 0.1, 0.9);
         leftArm.rotation.z = -0.1;
         leftArm.rotation.y = -0.3;
         group.add(leftArm);
 
+        // Right temple arm
         const rightArm = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.06, 0.06), armMat);
         rightArm.position.set(1.9, 0.1, 0.9);
         rightArm.rotation.z = 0.1;
         rightArm.rotation.y = 0.3;
         group.add(rightArm);
 
-        // Gold accents on arms
-        const accentMat = new THREE.MeshPhysicalMaterial({
-          color: 0xc6a15b,
-          metalness: 0.8,
-          roughness: 0.2,
-        });
+        // Gold accent on left arm
         const accent1 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.02, 0.04), accentMat);
         accent1.position.set(-1.4, 0.1, 0.9);
         group.add(accent1);
 
+        // Gold accent on right arm
         const accent2 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.02, 0.04), accentMat);
         accent2.position.set(1.4, 0.1, 0.9);
         group.add(accent2);
 
-        // Nose pads
-        const padMat = new THREE.MeshPhysicalMaterial({
-          color: 0xc6a15b,
-          metalness: 0.7,
-          roughness: 0.3,
-        });
+        // Left nose pad
         const pad1 = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 8), padMat);
         pad1.position.set(-0.25, -0.35, 0.3);
         group.add(pad1);
 
+        // Right nose pad
         const pad2 = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 8), padMat);
         pad2.position.set(0.25, -0.35, 0.3);
         group.add(pad2);
 
-        // Controls
+        // === ORBIT CONTROLS ===
         controls = new OrbitControls(camera, renderer.domElement);
         controls.enableZoom = true;
         controls.enablePan = false;
@@ -171,6 +177,7 @@ export default function Product3D() {
         controls.target.set(0, 0, 0);
         controls.update();
 
+        // === ANIMATION ===
         const animate = () => {
           animationId = requestAnimationFrame(animate);
           controls.update();
@@ -178,6 +185,7 @@ export default function Product3D() {
         };
         animate();
 
+        // === RESIZE ===
         const handleResize = () => {
           if (!container) return;
           const newWidth = container.clientWidth || 600;

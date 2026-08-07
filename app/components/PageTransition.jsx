@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-// Page transition variants
 const pageVariants = {
   initial: {
     opacity: 0,
@@ -29,7 +28,6 @@ const pageVariants = {
   },
 };
 
-// Children stagger animation
 const containerVariants = {
   animate: {
     transition: {
@@ -39,31 +37,14 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  initial: {
-    opacity: 0,
-    y: 15,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
 export default function PageTransition({ children }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Show loading state on route change
     const handleStart = () => setIsLoading(true);
     const handleComplete = () => setIsLoading(false);
 
-    // Listen for route changes
     window.addEventListener('routeChangeStart', handleStart);
     window.addEventListener('routeChangeComplete', handleComplete);
 
@@ -83,7 +64,6 @@ export default function PageTransition({ children }) {
         variants={pageVariants}
         className="relative"
       >
-        {/* Gold Loading Bar */}
         {isLoading && (
           <motion.div
             initial={{ scaleX: 0 }}
@@ -93,8 +73,6 @@ export default function PageTransition({ children }) {
             className="fixed top-0 left-0 right-0 h-[2px] bg-gold z-100 origin-left"
           />
         )}
-
-        {/* Page Content with Staggered Children */}
         <motion.div variants={containerVariants}>
           {children}
         </motion.div>
