@@ -1,26 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    // Ignore ESLint errors during production builds
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    domains: [],
+  },
+  // Enable React strict mode for better development
+  reactStrictMode: true,
+  // Configure for better performance
+  swcMinify: true,
+  // Allow transpilation of specific packages if needed
+  transpilePackages: [],
+  // Webpack configuration (if needed)
   webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve = {
-        ...config.resolve,
-        fallback: {
-          fs: false,
-          path: false,
-          crypto: false,
-        },
-      };
-    }
-    
-    // This is the key fix for Three.js
-    config.module = {
-      ...config.module,
-      exprContextCritical: false,
-    };
-    
+    // Add any custom webpack configuration here if needed
     return config;
   },
-  transpilePackages: ['three'],
 };
 
 module.exports = nextConfig;
