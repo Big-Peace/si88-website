@@ -18,9 +18,9 @@ export default function AnimatedCounter({ target, duration = 2000, suffix = '', 
       const updateCount = () => {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+        const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(eased * endValue);
-        
+
         setCount(current);
 
         if (progress < 1) {
@@ -35,7 +35,7 @@ export default function AnimatedCounter({ target, duration = 2000, suffix = '', 
   }, [isInView, target, duration]);
 
   return (
-    <span ref={ref} className="text-4xl md:text-5xl font-light text-gold">
+    <span ref={ref} className="text-4xl md:text-5xl font-light text-gold font-['Fraunces',serif]">
       {prefix}{count}{suffix}
     </span>
   );

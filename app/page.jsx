@@ -1,47 +1,11 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 import Globe from './components/Globe';
 import AnimatedCounter from './components/AnimatedCounter';
-
-// Section Animation Variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
-};
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    }
-  }
-};
+import AnimatedSection from './components/AnimatedSection';
 
 export default function Home() {
-  const statsRef = useRef(null);
-  const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
-
-  const industries = [
-    'Healthcare & Medical Equipment',
-    'Consumer Goods & Fashion',
-    'Agriculture & Commodities',
-    'Energy & Natural Resources',
-    'Industrial Supply & Manufacturing',
-    'Government & Infrastructure'
-  ];
-
   const divisions = [
     { name: 'SI88 Trade', icon: '📦', description: 'International trading and procurement' },
     { name: 'SI88 Medical', icon: '🏥', description: 'Healthcare and medical equipment' },
@@ -50,363 +14,320 @@ export default function Home() {
     { name: 'Si Confidenci', icon: '👓', description: 'Luxury eyewear brand' },
   ];
 
+  const industries = [
+    'Healthcare & Medical Equipment',
+    'Consumer Goods & Fashion',
+    'Agriculture & Commodities',
+    'Energy & Natural Resources',
+    'Industrial Supply & Manufacturing',
+    'Government & Infrastructure',
+  ];
+
+  const values = [
+    { name: 'Integrity', description: 'We operate with honesty and transparency in everything we do.' },
+    { name: 'Professionalism', description: 'We maintain the highest standards of professional conduct.' },
+    { name: 'Excellence', description: 'We pursue excellence relentlessly in all our endeavors.' },
+    { name: 'Innovation', description: 'We embrace innovation to create lasting value for our partners.' },
+    { name: 'Reliability', description: 'We build trust through consistent, dependable service.' },
+    { name: 'Long-Term Relationships', description: 'We focus on building partnerships that endure for generations.' },
+  ];
+
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black">
 
       {/* ============================================================ */}
-      {/* HERO SECTION - Luxury Corporate */}
+      {/* HERO SECTION */}
       {/* ============================================================ */}
-      <section className="relative min-h-screen flex items-center bg-white overflow-hidden pt-16 md:pt-20">
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gold/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gold/5 rounded-full blur-3xl"></div>
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+        {/* 3D Globe - positioned in background */}
+        <div className="absolute top-0 right-0 w-2/3 h-full z-1 pointer-events-none opacity-0 transition-opacity duration-1600 ease-[cubic-bezier(.22,.68,0,1)] delay-1000 [&.ready]:opacity-100">
+          <Globe />
         </div>
 
-        <div className="container-premium relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            {/* Left: Content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="order-2 lg:order-1"
-            >
-              {/* Gold Divider */}
-              <motion.div variants={fadeIn} className="w-16 h-0.5 bg-gold mb-6"></motion.div>
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-1"></div>
 
-              {/* Badge */}
-              <motion.div variants={fadeIn}>
-                <span className="inline-block text-xs font-medium text-gold uppercase tracking-[0.2em] bg-gold/5 px-4 py-1.5 border border-gold/10">
-                  Established • Global Group
-                </span>
-              </motion.div>
+        <div className="container-premium relative z-2">
+          <div className="max-w-[640px]">
+            {/* Eyebrow */}
+            <span className="eyebrow block mb-5 opacity-0 animate-[riseIn_0.9s_var(--ease)_0.2s_forwards]">
+              Global Trade & Brand Development
+            </span>
 
-              {/* Headline */}
-              <motion.h1 variants={fadeInUp} className="mt-4">
-                <span className="block font-light text-dark">Building Value</span>
-                <span className="block font-light text-dark">Across</span>
-                <span className="block font-bold text-gold text-5xl md:text-6xl lg:text-7xl mt-1">Industries.</span>
-                <span className="block text-dark font-light text-2xl md:text-3xl mt-4 tracking-wider">
-                  Excellence. Innovation. Long-Term Growth.
-                </span>
-              </motion.h1>
+            {/* Headline */}
+            <h1 className="text-[clamp(2.4rem,5.2vw,4.1rem)] leading-[1.08] font-['Fraunces',serif] font-light tracking-[-0.01em] opacity-0 animate-[riseIn_1s_var(--ease)_0.4s_forwards] text-white">
+              Building Value Across Industries.
+              <br />
+              <span className="text-gold font-bold">Excellence. Innovation. Long-Term Growth.</span>
+            </h1>
 
-              {/* Description */}
-              <motion.p variants={fadeInUp} className="mt-6 text-gray-600 max-w-lg leading-relaxed">
-                SI88 Limited is an international trading and brand development group 
-                connecting businesses across Africa, Asia, and the wider global marketplace.
-              </motion.p>
+            {/* Description */}
+            <p className="mt-6 max-w-[460px] text-dim text-[1.02rem] leading-relaxed opacity-0 animate-[riseIn_1s_var(--ease)_0.65s_forwards]">
+              SI88 Limited is an international trading and brand development group connecting businesses across Africa, Asia, and global markets. We build enduring value through trusted partnerships and world-class brands.
+            </p>
 
-              {/* CTA Buttons */}
-              <motion.div variants={fadeInUp} className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link href="/services">
-                  <button className="w-full sm:w-auto px-8 py-3 bg-dark text-white text-sm font-medium uppercase tracking-wider hover:bg-gold transition-colors duration-300">
-                    Explore Our Businesses
-                  </button>
-                </Link>
-                <Link href="/contact">
-                  <button className="w-full sm:w-auto px-8 py-3 border border-dark text-dark text-sm font-medium uppercase tracking-wider hover:bg-gold hover:border-gold hover:text-white transition-colors duration-300">
-                    Schedule a Consultation
-                  </button>
-                </Link>
-              </motion.div>
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 mt-10 opacity-0 animate-[riseIn_1s_var(--ease)_0.85s_forwards]">
+              <Link href="/services" className="btn-primary">Explore Our Businesses</Link>
+              <Link href="/contact" className="btn-ghost">Schedule a Consultation</Link>
+            </div>
+          </div>
+        </div>
 
-              {/* Trust Indicators */}
-              <motion.div variants={fadeInUp} className="mt-8 flex items-center gap-6 text-xs text-gray-400 uppercase tracking-wider">
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                  Trusted Partner
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                  Global Network
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                  Premium Brands
-                </span>
-              </motion.div>
-            </motion.div>
+        {/* Scroll Cue */}
+        <div className="absolute bottom-8 left-8 flex items-center gap-3 text-dim-dark text-[0.7rem] tracking-[0.2em] z-2">
+          SCROLL
+          <span className="w-[1px] h-8 bg-gradient-to-b from-gold to-transparent animate-[pulseLine_2.4s_ease-in-out_infinite]"></span>
+        </div>
+      </section>
 
-            {/* Right: Globe */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="order-1 lg:order-2 flex justify-center"
-            >
-              <div className="w-full max-w-[450px] md:max-w-[550px]">
-                <Globe />
-              </div>
-            </motion.div>
-
+      {/* ============================================================ */}
+      {/* STATS - Animated Counters */}
+      {/* ============================================================ */}
+      <section className="section-dark-alt py-20 border-t border-gold/10">
+        <div className="container-premium">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <AnimatedCounter target={12} suffix="+" />
+              <p className="text-dim text-sm mt-2 font-medium">Industry Sectors</p>
+            </div>
+            <div>
+              <AnimatedCounter target={15} suffix="+" />
+              <p className="text-dim text-sm mt-2 font-medium">Global Markets</p>
+            </div>
+            <div>
+              <AnimatedCounter target={100} suffix="+" />
+              <p className="text-dim text-sm mt-2 font-medium">Trusted Partners</p>
+            </div>
+            <div>
+              <AnimatedCounter target={5} />
+              <p className="text-dim text-sm mt-2 font-medium">Business Divisions</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* STATS SECTION - Animated Counters */}
+      {/* COMPANY OVERVIEW */}
       {/* ============================================================ */}
-      <section ref={statsRef} className="section-gray py-20 border-t border-gray-200">
+      <section className="section-dark py-[130px]">
         <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={statsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-          >
-            <div>
-              <AnimatedCounter target={12} suffix="+" />
-              <p className="text-gray-600 text-sm mt-2 font-medium">Industry Sectors</p>
-            </div>
-            <div>
-              <AnimatedCounter target={15} suffix="+" />
-              <p className="text-gray-600 text-sm mt-2 font-medium">Global Markets</p>
-            </div>
-            <div>
-              <AnimatedCounter target={100} suffix="+" />
-              <p className="text-gray-600 text-sm mt-2 font-medium">Trusted Partners</p>
-            </div>
-            <div>
-              <AnimatedCounter target={5} />
-              <p className="text-gray-600 text-sm mt-2 font-medium">Business Divisions</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-20 items-start">
+            <AnimatedSection>
+              <span className="eyebrow">About SI88 Limited</span>
+              <h2 className="text-[clamp(1.9rem,3.4vw,2.7rem)] font-['Fraunces',serif] font-light leading-[1.2] mt-4 mb-6 text-white">
+                A diversified enterprise, <br />built on trust.
+              </h2>
+              <p className="text-[1.2rem] leading-relaxed text-[#d8d5cd] font-light">
+                SI88 Limited was established with a clear vision: to become a respected international enterprise that connects markets, creates opportunities, and develops brands that stand the test of time.{' '}
+                <strong className="text-white font-medium">Our operations span international importation, exportation, general trading, strategic procurement, and brand development.</strong>
+              </p>
+              <div className="mt-8">
+                <Link href="/about" className="btn-ghost">Learn More About SI88</Link>
+              </div>
+            </AnimatedSection>
 
-      {/* ============================================================ */}
-      {/* COMPANY OVERVIEW - Credibility */}
-      {/* ============================================================ */}
-      <section className="section-light py-20 md:py-28">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="max-w-4xl"
-          >
-            <div className="gold-divider mb-6"></div>
-            <h2 className="text-3xl md:text-4xl font-light text-dark">
-              A Global Group Built on <br />
-              <span className="font-bold text-gold">Trust, Integrity &amp; Innovation</span>
-            </h2>
-            <p className="mt-6 text-gray-600 leading-relaxed max-w-2xl">
-              SI88 Limited was established with a clear vision: to become a respected 
-              international enterprise that connects markets, creates opportunities, 
-              and develops brands that stand the test of time.
-            </p>
-            <p className="mt-4 text-gray-600 leading-relaxed max-w-2xl">
-              Our operations span international importation, exportation, general trading, 
-              strategic procurement, and brand development. We believe successful business 
-              is built on trust, consistency, and mutually beneficial partnerships.
-            </p>
-            <Link href="/about">
-              <button className="mt-8 px-8 py-3 border border-dark text-dark text-sm font-medium uppercase tracking-wider hover:bg-dark hover:text-white transition-colors duration-300">
-                Learn More About SI88
-              </button>
-            </Link>
-          </motion.div>
+            <AnimatedSection delay={150}>
+              <div className="flex flex-col">
+                {[
+                  {
+                    title: 'Vision',
+                    desc: "To become one of Africa's most respected international trading and brand development companies.",
+                  },
+                  {
+                    title: 'Mission',
+                    desc: 'To connect global markets through trusted trade, professional service, strategic partnerships, and the development of world-class brands.',
+                  },
+                  {
+                    title: 'Expansion',
+                    desc: 'Strategically growing into healthcare, medical equipment, agriculture, energy, industrial supplies, and premium consumer products.',
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className={`py-5 border-b ${i === 0 ? 'border-t border-gold/20' : ''} border-gold/20`}
+                  >
+                    <h3 className="text-[1rem] font-medium font-['Inter'] text-gold-light mb-1.5 tracking-[0.02em]">
+                      {item.title}
+                    </h3>
+                    <p className="text-dim text-[0.92rem] leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* ============================================================ */}
       {/* BUSINESS DIVISIONS */}
       {/* ============================================================ */}
-      <section className="section-gray py-20 md:py-28">
+      <section className="section-light py-[130px]">
         <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-center mb-16"
-          >
-            <span className="text-xs font-medium text-gold uppercase tracking-[0.2em]">Our Group</span>
-            <h2 className="text-3xl md:text-4xl font-light text-dark mt-2">
-              Business <span className="font-bold text-gold">Divisions</span>
-            </h2>
+          <div className="text-center mb-16">
+            <span className="eyebrow text-gold-deep">Our Group</span>
+            <h2 className="text-black mt-2">Business <span className="font-bold text-gold">Divisions</span></h2>
             <div className="gold-divider-center mt-4"></div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {divisions.map((division, index) => (
-              <motion.div
-                key={division.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="bg-white p-8 rounded-sm border border-gray-200 text-center hover:border-gold transition-all duration-300 group"
-              >
-                <div className="text-4xl mb-3">{division.icon}</div>
-                <h4 className="text-sm font-semibold text-dark group-hover:text-gold transition-colors">
-                  {division.name}
-                </h4>
-                <p className="text-xs text-gray-500 mt-1">{division.description}</p>
-              </motion.div>
+              <AnimatedSection key={division.name} delay={index * 100}>
+                <div className="bg-white p-8 rounded-sm border border-gray-200 text-center hover:border-gold transition-all duration-300 group">
+                  <div className="text-4xl mb-3">{division.icon}</div>
+                  <h4 className="text-sm font-semibold text-dark group-hover:text-gold transition-colors">
+                    {division.name}
+                  </h4>
+                  <p className="text-xs text-gray-500 mt-1">{division.description}</p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="text-center mt-10"
-          >
+          <div className="text-center mt-10">
             <Link href="/brands">
               <span className="text-sm text-gold font-medium hover:underline cursor-pointer">
                 Explore All Divisions →
               </span>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* INDUSTRIES SERVED */}
+      {/* INDUSTRIES SERVED - Marquee */}
       {/* ============================================================ */}
-      <section className="section-light py-20 md:py-28">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-          >
-            <div>
-              <span className="text-xs font-medium text-gold uppercase tracking-[0.2em]">Sectors</span>
-              <h2 className="text-3xl md:text-4xl font-light text-dark mt-2">
-                Industries <span className="font-bold text-gold">We Serve</span>
-              </h2>
-              <div className="gold-divider mt-4"></div>
-              <p className="mt-6 text-gray-600 leading-relaxed">
-                Our expertise spans multiple sectors, allowing us to provide comprehensive 
-                solutions across the global marketplace.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {industries.map((industry, index) => (
-                  <motion.li
-                    key={industry}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-3 text-gray-700"
-                  >
-                    <span className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></span>
-                    <span>{industry}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-gray-50 p-12 rounded-sm border border-gray-200"
-            >
-              <div className="text-center">
-                <div className="text-5xl mb-4">🌍</div>
-                <h3 className="text-xl font-light text-dark">Global Reach</h3>
-                <p className="text-gray-500 text-sm mt-2">
-                  Connecting Africa, Asia, and markets worldwide.
-                </p>
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">
-                    Africa • Asia • Europe • Americas
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+      <section className="bg-black-2 py-20 border-y border-gold/15 overflow-hidden">
+        <span className="eyebrow block text-center mb-8">Industries We Serve</span>
+        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
+          <div className="flex gap-14 w-max animate-marquee-slow">
+            {[
+              'Healthcare',
+              'Medical Equipment',
+              'Consumer Goods',
+              'Fashion & Lifestyle',
+              'Agriculture',
+              'Energy',
+              'Industrial Supply',
+              'Manufacturing',
+              'Government Procurement',
+              'Infrastructure',
+            ]
+              .concat([
+                'Healthcare',
+                'Medical Equipment',
+                'Consumer Goods',
+                'Fashion & Lifestyle',
+                'Agriculture',
+                'Energy',
+                'Industrial Supply',
+                'Manufacturing',
+                'Government Procurement',
+                'Infrastructure',
+              ])
+              .map((item, i) => (
+                <span
+                  key={i}
+                  className="font-['Fraunces',serif] text-[1.5rem] text-dim-dark whitespace-nowrap flex items-center gap-14 after:content-['—'] after:text-gold"
+                >
+                  {item}
+                </span>
+              ))}
+          </div>
         </div>
       </section>
 
       {/* ============================================================ */}
       {/* LEADERSHIP / VALUES */}
       {/* ============================================================ */}
-      <section className="section-gray py-20 md:py-28">
+      <section className="section-dark-alt py-[130px]">
         <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-center mb-16"
-          >
-            <span className="text-xs font-medium text-gold uppercase tracking-[0.2em]">Leadership</span>
-            <h2 className="text-3xl md:text-4xl font-light text-dark mt-2">
-              Our <span className="font-bold text-gold">Core Values</span>
-            </h2>
+          <div className="text-center mb-16">
+            <span className="eyebrow">Leadership</span>
+            <h2 className="text-white mt-2">Our <span className="text-gold font-bold">Core Values</span></h2>
             <div className="gold-divider-center mt-4"></div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              { name: 'Integrity', description: 'We operate with honesty and transparency in everything we do.' },
-              { name: 'Professionalism', description: 'We maintain the highest standards of professional conduct.' },
-              { name: 'Excellence', description: 'We pursue excellence relentlessly in all our endeavors.' },
-              { name: 'Innovation', description: 'We embrace innovation to create lasting value for our partners.' },
-              { name: 'Reliability', description: 'We build trust through consistent, dependable service.' },
-              { name: 'Long-Term Relationships', description: 'We focus on building partnerships that endure for generations.' },
-            ].map((value, index) => (
-              <motion.div
-                key={value.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="bg-white p-8 rounded-sm border border-gray-200 hover:border-gold transition-all duration-300"
-              >
-                <div className="w-8 h-0.5 bg-gold mb-4"></div>
-                <h4 className="text-lg font-semibold text-dark">{value.name}</h4>
-                <p className="text-gray-500 text-sm mt-2">{value.description}</p>
-              </motion.div>
+            {values.map((value, index) => (
+              <AnimatedSection key={value.name} delay={index * 100}>
+                <div className="bg-black-2 p-8 rounded-sm border border-gold/10 hover:border-gold transition-all duration-300">
+                  <div className="w-8 h-0.5 bg-gold mb-4"></div>
+                  <h4 className="text-lg font-semibold text-white">{value.name}</h4>
+                  <p className="text-dim text-sm mt-2">{value.description}</p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* CALL TO ACTION - Final */}
+      {/* CEO / FOUNDER */}
       {/* ============================================================ */}
-      <section className="section-dark py-20 md:py-28">
+      <section className="section-dark py-[130px]">
+        <div className="container-premium">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-16 items-center">
+            <div className="aspect-[3/4] border border-gold relative bg-gradient-to-br from-[#171512] to-black/90">
+              <span className="absolute inset-0 flex items-center justify-center font-['Fraunces',serif] text-[3.2rem] text-gold/50">
+                SI
+              </span>
+              <span className="absolute inset-[14px] border border-gold/35"></span>
+            </div>
+            <AnimatedSection>
+              <span className="eyebrow">Founder & Chief Executive Officer</span>
+              <p className="font-['Fraunces',serif] italic text-[clamp(1.4rem,2.6vw,2rem)] leading-[1.5] text-white font-light mt-5">
+                &quot;Great companies are not built by chasing opportunities — they are built by earning trust, solving meaningful problems, and creating value that outlives their founders.&quot;
+              </p>
+              <div className="mt-6">
+                <div className="font-['Fraunces',serif] text-[1.1rem] text-gold-light">Founder &amp; CEO</div>
+                <div className="text-[0.8rem] text-dim tracking-[0.04em] mt-0.5">SI88 Limited</div>
+              </div>
+              <div className="grid grid-cols-2 gap-3 gap-x-8 mt-8">
+                {[
+                  'Integrity above everything',
+                  'Think globally, act responsibly',
+                  'Build lasting partnerships',
+                  'Pursue excellence relentlessly',
+                  'Create value before seeking profit',
+                  'Never stop innovating',
+                ].map((p, i) => (
+                  <div
+                    key={i}
+                    className="text-[0.86rem] text-dim pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-2 before:h-[1px] before:bg-gold"
+                  >
+                    {p}
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* FINAL CTA */}
+      {/* ============================================================ */}
+      <section className="section-dark-alt py-20 md:py-28 border-t border-gold/10">
         <div className="container-premium text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <span className="text-xs font-medium text-gold uppercase tracking-[0.2em]">Get Started</span>
+          <AnimatedSection>
+            <span className="eyebrow">Get Started</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mt-3">
               Ready to <span className="font-bold text-gold">Partner</span> With Us?
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mt-4">
-              Let's discuss how SI88 Limited can support your business objectives 
+            <p className="text-dim max-w-2xl mx-auto mt-4">
+              Let's discuss how SI88 Limited can support your business objectives
               and create enduring value.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link href="/contact">
-                <button className="w-full sm:w-auto px-10 py-4 bg-gold text-dark font-medium uppercase tracking-wider hover:bg-gold/90 transition-colors duration-300">
-                  Contact SI88
-                </button>
+                <button className="w-full sm:w-auto px-10 py-4 btn-primary">Contact SI88</button>
               </Link>
               <Link href="/services">
-                <button className="w-full sm:w-auto px-10 py-4 border border-white/30 text-white font-medium uppercase tracking-wider hover:bg-white/10 transition-colors duration-300">
-                  Explore Our Businesses
-                </button>
+                <button className="w-full sm:w-auto px-10 py-4 btn-ghost">Explore Our Businesses</button>
               </Link>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
