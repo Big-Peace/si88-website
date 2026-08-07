@@ -11,7 +11,6 @@ export default function Globe() {
         const THREE = await import('three');
         const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
         
-        // Get container size
         const container = containerRef.current;
         if (!container) return;
         
@@ -32,6 +31,7 @@ export default function Globe() {
         container.innerHTML = '';
         container.appendChild(renderer.domElement);
         
+        // Lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
         
@@ -46,19 +46,32 @@ export default function Globe() {
         // Responsive sphere size
         const sphereRadius = Math.min(width / 5, 1.8);
         
+        // Globe with wireframe and subtle glow
         const geometry = new THREE.SphereGeometry(sphereRadius, 48, 48);
         const material = new THREE.MeshStandardMaterial({
           color: 0xD4AF37,
           wireframe: true,
           emissive: 0xD4AF37,
-          emissiveIntensity: 0.2,
+          emissiveIntensity: 0.15,
           transparent: true,
-          opacity: 0.6,
+          opacity: 0.7,
         });
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
         
-        // Responsive particles
+        // Inner glow sphere
+        const glowGeometry = new THREE.SphereGeometry(sphereRadius * 0.99, 48, 48);
+        const glowMaterial = new THREE.MeshStandardMaterial({
+          color: 0xD4AF37,
+          transparent: true,
+          opacity: 0.05,
+          emissive: 0xD4AF37,
+          emissiveIntensity: 0.1,
+        });
+        const glowSphere = new THREE.Mesh(glowGeometry, glowMaterial);
+        scene.add(glowSphere);
+        
+        // Particles (network connections)
         const particlesGeometry = new THREE.BufferGeometry();
         const count = Math.min(800, Math.floor(width * 2));
         const positions = new Float32Array(count * 3);
@@ -75,7 +88,7 @@ export default function Globe() {
           color: 0xD4AF37,
           size: Math.max(0.02, sphereRadius * 0.015),
           transparent: true,
-          opacity: 0.8,
+          opacity: 0.6,
           blending: THREE.AdditiveBlending,
         });
         const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -91,6 +104,8 @@ export default function Globe() {
         const animate = () => {
           animationId = requestAnimationFrame(animate);
           globe.rotation.y += 0.0015;
+          glowSphere.rotation.y += 0.0015;
+          particles.rotation.y += 0.0008;
           controls.update();
           renderer.render(scene, camera);
         };

@@ -4,7 +4,10 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #1A1A1A;
+  --foreground: #0A0A0A;
+  --gold: #D4AF37;
+  --gold-light: #E8D48C;
+  --gold-dark: #B8960F;
 }
 
 * {
@@ -21,42 +24,64 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mobile-first container */
-.container {
+/* Premium Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.2;
+}
+
+p {
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+}
+
+/* Container - Premium spacing */
+.container-premium {
   width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 640px) {
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
+  .container-premium {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .container {
-    padding-left: 3rem;
-    padding-right: 3rem;
+  .container-premium {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
   }
 }
 
-/* Gold accent styling */
+/* Gold Elements - Used with restraint */
 .gold-text {
   color: #D4AF37;
 }
@@ -69,17 +94,34 @@ body {
   background-color: #D4AF37;
 }
 
-/* Responsive typography */
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, #D4AF37, transparent);
 }
 
-h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+.gold-divider-center {
+  width: 60px;
+  height: 2px;
+  background: #D4AF37;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-p {
-  font-size: clamp(0.875rem, 2vw, 1.125rem);
+/* Subtle Section Transitions */
+.section-dark {
+  background: #0A0A0A;
+  color: #FFFFFF;
+}
+
+.section-light {
+  background: #FFFFFF;
+  color: #0A0A0A;
+}
+
+.section-gray {
+  background: #F7F7F7;
+  color: #0A0A0A;
 }
 
 /* Touch-friendly buttons */
@@ -113,4 +155,22 @@ img {
 /* Remove tap highlight on mobile */
 * {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom scrollbar - Premium */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8960F;
 }
