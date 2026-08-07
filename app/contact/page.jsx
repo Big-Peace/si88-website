@@ -38,7 +38,7 @@ export default function ContactPage() {
         subject: '',
         message: ''
       });
-    } catch (err) {
+    } catch {
       setError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);

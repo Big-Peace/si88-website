@@ -248,3 +248,11 @@ p {
   outline: 1px solid var(--gold);
   outline-offset: 4px;
 }
+
+body {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+h1, h2, h3, .serif {
+  font-family: var(--font-fraunces), 'Fraunces', serif;
+}

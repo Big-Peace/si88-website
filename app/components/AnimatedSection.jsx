@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 
 export default function AnimatedSection({ children, className = '', delay = 0 }) {
