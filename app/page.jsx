@@ -1,9 +1,12 @@
 "use client";
 
 import Link from 'next/link';
+import { Suspense } from 'react';
 import Globe from './components/Globe';
+import Scene3D from './components/Scene3D';
 import AnimatedCounter from './components/AnimatedCounter';
 import AnimatedSection from './components/AnimatedSection';
+import AnimatedItem from './components/AnimatedItem';
 
 export default function Home() {
   const divisions = [
@@ -33,7 +36,10 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black relative">
+
+      {/* Background 3D Particles */}
+      <Scene3D />
 
       {/* ============================================================ */}
       {/* HERO SECTION */}
@@ -41,7 +47,9 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
         {/* 3D Globe - positioned in background */}
         <div className="absolute top-0 right-0 w-2/3 h-full z-1 pointer-events-none opacity-0 transition-opacity duration-1600 ease-[cubic-bezier(.22,.68,0,1)] delay-1000 [&.ready]:opacity-100">
-          <Globe />
+          <Suspense fallback={<div className="text-gold text-center">Loading 3D Globe...</div>}>
+            <Globe />
+          </Suspense>
         </div>
 
         {/* Gradient overlay for readability */}
@@ -50,27 +58,35 @@ export default function Home() {
         <div className="container-premium relative z-2">
           <div className="max-w-[640px]">
             {/* Eyebrow */}
-            <span className="eyebrow block mb-5 opacity-0 animate-[riseIn_0.9s_var(--ease)_0.2s_forwards]">
-              Global Trade & Brand Development
-            </span>
+            <AnimatedItem>
+              <span className="eyebrow block mb-5">
+                Global Trade & Brand Development
+              </span>
+            </AnimatedItem>
 
             {/* Headline */}
-            <h1 className="text-[clamp(2.4rem,5.2vw,4.1rem)] leading-[1.08] font-['Fraunces',serif] font-light tracking-[-0.01em] opacity-0 animate-[riseIn_1s_var(--ease)_0.4s_forwards] text-white">
-              Building Value Across Industries.
-              <br />
-              <span className="text-gold font-bold">Excellence. Innovation. Long-Term Growth.</span>
-            </h1>
+            <AnimatedItem delay={0.1}>
+              <h1 className="text-[clamp(2.4rem,5.2vw,4.1rem)] leading-[1.08] font-['Fraunces',serif] font-light tracking-[-0.01em] text-white">
+                Building Value Across Industries.
+                <br />
+                <span className="text-gold font-bold">Excellence. Innovation. Long-Term Growth.</span>
+              </h1>
+            </AnimatedItem>
 
             {/* Description */}
-            <p className="mt-6 max-w-[460px] text-dim text-[1.02rem] leading-relaxed opacity-0 animate-[riseIn_1s_var(--ease)_0.65s_forwards]">
-              SI88 Limited is an international trading and brand development group connecting businesses across Africa, Asia, and global markets. We build enduring value through trusted partnerships and world-class brands.
-            </p>
+            <AnimatedItem delay={0.2}>
+              <p className="mt-6 max-w-[460px] text-dim text-[1.02rem] leading-relaxed">
+                SI88 Limited is an international trading and brand development group connecting businesses across Africa, Asia, and global markets. We build enduring value through trusted partnerships and world-class brands.
+              </p>
+            </AnimatedItem>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mt-10 opacity-0 animate-[riseIn_1s_var(--ease)_0.85s_forwards]">
-              <Link href="/services" className="btn-primary">Explore Our Businesses</Link>
-              <Link href="/contact" className="btn-ghost">Schedule a Consultation</Link>
-            </div>
+            <AnimatedItem delay={0.3}>
+              <div className="flex flex-wrap gap-4 mt-10">
+                <Link href="/services" className="btn-primary">Explore Our Businesses</Link>
+                <Link href="/contact" className="btn-ghost">Schedule a Consultation</Link>
+              </div>
+            </AnimatedItem>
           </div>
         </div>
 

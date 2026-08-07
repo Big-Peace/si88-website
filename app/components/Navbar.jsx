@@ -6,12 +6,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(true); // Changed to true by default
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      // Always show navbar background
+      setIsScrolled(true);
     };
+    
+    // Set background on load
+    setIsScrolled(true);
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -36,17 +41,19 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        isScrolled ? 'bg-black/86 backdrop-blur-[14px] border-b border-gold/18 py-3' : 'bg-transparent py-5'
+        isScrolled ? 'bg-black/95 backdrop-blur-[14px] border-b border-gold/18 py-3' : 'bg-black/95 backdrop-blur-[14px] border-b border-gold/18 py-3'
       }`}
     >
       <div className="container-premium">
         <nav className="flex items-center justify-between">
-          {/* Logo - also links to home */}
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="font-['Fraunces',serif] text-[1.6rem] tracking-[0.02em] text-white">
-              SI<span className="text-gold">88</span>
-            </span>
-            <span className="text-[0.58rem] tracking-[0.32em] text-dim uppercase mt-1">Limited</span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <div className="flex flex-col leading-none">
+              <span className="font-['Fraunces',serif] text-[1.6rem] tracking-[0.02em] text-white">
+                SI<span className="text-gold">88</span>
+              </span>
+              <span className="text-[0.58rem] tracking-[0.32em] text-dim uppercase mt-1">Limited</span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -55,7 +62,7 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="text-[0.82rem] tracking-[0.04em] text-dim relative pb-1 transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all after:duration-350 hover:after:w-full"
+                  className="text-[0.82rem] tracking-[0.04em] text-gray-300 relative pb-1 transition-colors duration-300 hover:text-gold after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all after:duration-350 hover:after:w-full"
                 >
                   {link.name}
                 </Link>
