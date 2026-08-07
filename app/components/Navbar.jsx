@@ -25,6 +25,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Brands', href: '/brands' },
@@ -40,7 +41,7 @@ export default function Navbar() {
     >
       <div className="container-premium">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - also links to home */}
           <Link href="/" className="flex flex-col leading-none">
             <span className="font-['Fraunces',serif] text-[1.6rem] tracking-[0.02em] text-white">
               SI<span className="text-gold">88</span>
@@ -49,7 +50,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-10 list-none">
+          <ul className="hidden md:flex items-center gap-8 lg:gap-10 list-none">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
@@ -89,22 +90,22 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="md:hidden overflow-hidden"
             >
-              <ul className="flex flex-col items-center gap-6 py-10 list-none">
+              <ul className="flex flex-col items-center gap-5 py-8 list-none">
                 {navLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-white text-[1.3rem] tracking-[0.04em] hover:text-gold transition-colors"
+                      className="text-white text-[1.1rem] tracking-[0.04em] hover:text-gold transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
-                <li>
+                <li className="mt-2">
                   <Link
                     href="/contact"
-                    className="border border-gold text-gold px-6 py-3 text-[0.85rem] tracking-[0.08em] hover:bg-gold hover:text-black transition-all"
+                    className="border border-gold text-gold px-6 py-3 text-[0.85rem] tracking-[0.08em] hover:bg-gold hover:text-black transition-all block"
                     onClick={() => setIsOpen(false)}
                   >
                     Partner With Us
