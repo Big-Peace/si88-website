@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import Image from 'next/image';
 import Product3D from '../components/Product3D';
 import Scene3D from '../components/Scene3D';
 
@@ -61,10 +62,8 @@ export default function BrandsPage() {
 
   return (
     <main className="min-h-screen bg-black pt-20">
-      {/* Background 3D Particles */}
       <Scene3D />
 
-      {/* Hero Section */}
       <section className="relative bg-black py-24 border-b border-gold/10 overflow-hidden">
         <div className="container-premium">
           <motion.div
@@ -73,15 +72,27 @@ export default function BrandsPage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-0.5 bg-gold"></div>
               <span className="text-gold text-sm font-semibold tracking-wider uppercase">Our Brand</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
-              <span className="font-bold text-gold">Si Confidenci</span>
-              <br />
+
+            <div className="mb-2">
+              <Image
+                src="/SI-Confidency.png"
+                alt="Si Confidenci"
+                width={600}
+                height={180}
+                className="w-auto"
+                style={{ height: 'auto', maxHeight: '120px' }}
+                priority
+              />
+            </div>
+
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight">
               Luxury Eyewear
             </h1>
+
             <p className="text-gray-400 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
               A flagship brand achievement developed by SI88 Limited in the Philippines,
               representing our commitment to creating internationally competitive premium brands.
@@ -174,9 +185,15 @@ export default function BrandsPage() {
             >
               <div className="bg-black w-full aspect-[4/3] rounded-sm border-2 border-gold/30 flex items-center justify-center relative overflow-hidden">
                 <div className="text-center text-gray-400">
-                  <div className="text-7xl mb-4">👓</div>
-                  <p className="text-lg font-medium text-white">Si Confidenci</p>
-                  <p className="text-sm text-gray-500">Luxury Eyewear Collection</p>
+                  <Image
+                    src="/SI-Confidency.png"
+                    alt="Si Confidenci"
+                    width={300}
+                    height={90}
+                    className="w-auto"
+                    style={{ height: 'auto', maxHeight: '70px' }}
+                  />
+                  <p className="text-sm text-gray-500 mt-4">Luxury Eyewear Collection</p>
                   <p className="text-xs text-gray-600 mt-2">(Brand Visual Coming Soon)</p>
                 </div>
               </div>
