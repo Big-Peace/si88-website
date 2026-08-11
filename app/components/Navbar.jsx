@@ -21,7 +21,6 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Brands', href: '/brands' },
-    { name: 'Leadership', href: '/about#leadership' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -29,7 +28,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-[14px] border-b border-gold/18 py-3">
       <div className="container-premium">
         <nav className="flex items-center justify-between">
-          {/* Logo with Image */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/S188.png"

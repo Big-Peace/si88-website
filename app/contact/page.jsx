@@ -182,7 +182,7 @@ export default function ContactPage() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500"
                           placeholder="Your full name"
                         />
                       </div>
@@ -196,7 +196,7 @@ export default function ContactPage() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500"
                           placeholder="your@email.com"
                         />
                       </div>
@@ -211,11 +211,12 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500"
                         placeholder="+234 800 000 0000"
                       />
                     </div>
 
+                    {/* Subject Field - Dark text inside */}
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Subject *
@@ -225,7 +226,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-dark"
                       >
                         <option value="">Select a subject</option>
                         <option value="General Inquiry">General Inquiry</option>
@@ -237,6 +238,7 @@ export default function ContactPage() {
                       </select>
                     </div>
 
+                    {/* Message Field - Dark text inside */}
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Message *
@@ -247,7 +249,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors resize-none text-white"
+                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors resize-none text-dark placeholder-gray-400"
                         placeholder="Tell us how we can help..."
                       />
                     </div>
