@@ -14,9 +14,10 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white pt-20">
-      <section className="relative bg-white py-20 md:py-28">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+    <main className="min-h-screen bg-black pt-20">
+      {/* Hero Section */}
+      <section className="relative bg-black py-20 md:py-28 border-b border-gold/10">
+        <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -24,10 +25,10 @@ export default function AboutPage() {
             className="max-w-4xl"
           >
             <div className="w-20 h-0.5 bg-gold mb-6"></div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-dark leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
               About <span className="font-semibold text-gold">SI88 Limited</span>
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+            <p className="text-gray-400 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
               An international trading and brand development company connecting markets, 
               creating opportunities, and building brands that stand the test of time.
             </p>
@@ -35,18 +36,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-lightGray py-16 md:py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* Company Story Section */}
+      <section className="bg-black-2 py-16 md:py-20 border-b border-gold/10">
+        <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-dark mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-8 text-center">
               Our <span className="font-semibold text-gold">Story</span>
             </h2>
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
                 SI88 Limited was established with a clear vision: to become a respected 
                 international enterprise that connects markets, creates opportunities, 
@@ -67,18 +69,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* Vision & Mission Section */}
+      <section className="bg-black py-16 md:py-20">
+        <div className="container-premium">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-lightGray p-8 md:p-10 rounded-sm"
+              className="bg-black-2 p-8 md:p-10 rounded-sm border border-gold/10"
             >
               <div className="text-gold text-4xl mb-4">👁️</div>
-              <h3 className="text-2xl font-semibold text-dark mb-4">Our Vision</h3>
-              <p className="text-gray-700 leading-relaxed">
+              <h3 className="text-2xl font-semibold text-white mb-4">Our Vision</h3>
+              <p className="text-gray-400 leading-relaxed">
                 To become one of Africa&apos;s most respected international trading and brand 
                 development companies, recognized for integrity, innovation, and enduring 
                 partnerships.
@@ -91,8 +94,8 @@ export default function AboutPage() {
               className="bg-gold/10 p-8 md:p-10 rounded-sm border border-gold/20"
             >
               <div className="text-gold text-4xl mb-4">🎯</div>
-              <h3 className="text-2xl font-semibold text-dark mb-4">Our Mission</h3>
-              <p className="text-gray-700 leading-relaxed">
+              <h3 className="text-2xl font-semibold text-white mb-4">Our Mission</h3>
+              <p className="text-gray-400 leading-relaxed">
                 To connect global markets through trusted trade, professional service, 
                 strategic partnerships, and the development of world-class brands.
               </p>
@@ -101,18 +104,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-lightGray py-16 md:py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* Core Values Section */}
+      <section className="bg-black-2 py-16 md:py-20 border-y border-gold/10">
+        <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-dark">
+            <h2 className="text-3xl md:text-4xl font-light text-white">
               Our <span className="font-semibold text-gold">Core Values</span>
             </h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
               The principles that guide everything we do.
             </p>
           </motion.div>
@@ -124,19 +128,20 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-sm border border-gray-200 hover:border-gold transition-all hover:shadow-lg"
+                className="bg-black p-8 rounded-sm border border-gold/10 hover:border-gold transition-all hover:shadow-gold/10 hover:shadow-xl"
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-dark mb-3">{value.name}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{value.name}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* CEO & Founder Section */}
+      <section className="bg-black py-16 md:py-20">
+        <div className="container-premium">
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -145,22 +150,22 @@ export default function AboutPage() {
               className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start"
             >
               <div className="md:col-span-1">
-                <div className="bg-lightGray w-full aspect-square rounded-sm border-2 border-gold/30 flex items-center justify-center">
+                <div className="bg-black-2 w-full aspect-square rounded-sm border-2 border-gold/30 flex items-center justify-center">
                   <div className="text-center text-gray-400">
                     <div className="text-6xl mb-2">👤</div>
                     <p className="text-sm">Founder Photo</p>
-                    <p className="text-xs text-gray-300">(Coming Soon)</p>
+                    <p className="text-xs text-gray-600">(Coming Soon)</p>
                   </div>
                 </div>
               </div>
               
               <div className="md:col-span-2">
                 <div className="w-20 h-0.5 bg-gold mb-6"></div>
-                <h2 className="text-3xl md:text-4xl font-light text-dark mb-2">
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">
                   Founder & <span className="font-semibold text-gold">Chief Executive Officer</span>
                 </h2>
                 
-                <div className="space-y-6 text-gray-700 leading-relaxed mt-6">
+                <div className="space-y-6 text-gray-300 leading-relaxed mt-6">
                   <p>
                     The Founder and Chief Executive Officer of SI88 Limited is an entrepreneur 
                     driven by a long-term vision: to build an internationally respected enterprise 
@@ -189,7 +194,7 @@ export default function AboutPage() {
                     'Create value before seeking profit',
                     'Never stop innovating'
                   ].map((principle, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                    <div key={i} className="flex items-center gap-2 text-sm text-gray-400">
                       <span className="text-gold">✓</span>
                       <span>{principle}</span>
                     </div>
@@ -201,35 +206,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-dark text-white py-16 md:py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
+      {/* Call to Action Section */}
+      <section className="bg-black-2 text-white py-16 md:py-20 border-t border-gold/10">
+        <div className="container-premium text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-light mb-4">
+            <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">
               Ready to Partner With Us?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
               Let&apos;s connect and explore how SI88 Limited can help your business grow.
             </p>
             <Link href="/contact">
-              <button className="px-10 py-4 bg-gold text-dark font-semibold rounded-sm hover:bg-opacity-80 transition-all">
+              <button className="px-10 py-4 bg-gold text-black font-semibold rounded-sm hover:bg-gold/90 transition-all">
                 Get In Touch
               </button>
             </Link>
           </motion.div>
         </div>
       </section>
-
-      <footer className="bg-dark/90 text-white py-8 border-t border-gray-800">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2026 SI88 Limited. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }

@@ -61,13 +61,10 @@ export default function BrandsPage() {
 
   return (
     <main className="min-h-screen bg-black pt-20">
-
       {/* Background 3D Particles */}
       <Scene3D />
 
-      {/* ============================================================ */}
-      {/* HERO SECTION */}
-      {/* ============================================================ */}
+      {/* Hero Section */}
       <section className="relative bg-black py-24 border-b border-gold/10 overflow-hidden">
         <div className="container-premium">
           <motion.div
@@ -107,9 +104,7 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 3D PRODUCT VIEWER */}
-      {/* ============================================================ */}
+      {/* 3D Product Viewer */}
       <section className="bg-black-2 py-20">
         <div className="container-premium">
           <motion.div
@@ -122,7 +117,7 @@ export default function BrandsPage() {
             <h2 className="text-3xl md:text-4xl font-light text-white mt-2">
               <span className="font-bold text-gold">3D</span> Product Experience
             </h2>
-            <p className="text-dim mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
               Interact with our luxury eyewear in 3D. Rotate, zoom, and explore every detail.
             </p>
           </motion.div>
@@ -138,15 +133,13 @@ export default function BrandsPage() {
             <Product3D />
           </Suspense>
 
-          <p className="text-center text-dim-dark text-sm mt-4">
+          <p className="text-center text-gray-600 text-sm mt-4">
             🖱️ Drag to rotate • Scroll to zoom
           </p>
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* BRAND RELATIONSHIP */}
-      {/* ============================================================ */}
+      {/* Brand Relationship */}
       <section className="bg-black py-12 border-b border-gold/10">
         <div className="container-premium">
           <motion.div
@@ -170,9 +163,7 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* BRAND STORY */}
-      {/* ============================================================ */}
+      {/* Brand Story */}
       <section className="bg-black-2 py-20">
         <div className="container-premium">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
@@ -227,9 +218,7 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* BRAND VALUES */}
-      {/* ============================================================ */}
+      {/* Brand Values */}
       <section className="bg-black py-20">
         <div className="container-premium">
           <motion.div
@@ -254,7 +243,7 @@ export default function BrandsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-black-2 border border-gray-800 rounded-sm p-8 text-center hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300"
+                className="bg-black-2 border border-gold/10 rounded-sm p-8 text-center hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300"
               >
                 <div className="text-5xl mb-4">{value.icon}</div>
                 <h3 className="text-xl font-semibold text-white mb-3">{value.name}</h3>
@@ -265,10 +254,8 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* GLOBAL EXPANSION */}
-      {/* ============================================================ */}
-      <section className="bg-black-2 py-20">
+      {/* Global Expansion */}
+      <section className="bg-black-2 py-20 border-y border-gold/10">
         <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -293,7 +280,7 @@ export default function BrandsPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-black p-6 rounded-sm border-l-4 border-gold shadow-sm flex items-center gap-4 hover:shadow-gold/5 hover:shadow-xl transition-shadow"
+                  className="bg-black p-6 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-gold/10 hover:shadow-xl transition-shadow"
                 >
                   <span className="text-gold text-2xl font-light">0{index + 1}</span>
                   <p className="text-gray-300 font-medium">{plan}</p>
@@ -304,9 +291,7 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* FUTURE DIVISIONS */}
-      {/* ============================================================ */}
+      {/* Future Divisions */}
       <section className="bg-black py-20 border-t border-gold/10">
         <div className="container-premium">
           <motion.div
@@ -336,7 +321,7 @@ export default function BrandsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-black-2 p-8 rounded-sm border border-gray-800 text-center hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300 group"
+                  className="bg-black-2 p-8 rounded-sm border border-gold/10 text-center hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300 group"
                 >
                   <div className="text-4xl mb-3">{division.icon}</div>
                   <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-gold transition-colors">
@@ -353,9 +338,7 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* CALL TO ACTION */}
-      {/* ============================================================ */}
+      {/* Call to Action */}
       <section className="bg-black-2 py-20 border-t border-gold/10">
         <div className="container-premium text-center">
           <motion.div
@@ -379,15 +362,6 @@ export default function BrandsPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-black text-white py-8 border-t border-gold/10">
-        <div className="container-premium text-center">
-          <p className="text-gray-500 text-sm">
-            © 2026 SI88 Limited. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }

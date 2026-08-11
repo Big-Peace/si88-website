@@ -92,9 +92,10 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white pt-20">
-      <section className="relative bg-white py-24 border-b border-gray-100">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+    <main className="min-h-screen bg-black pt-20">
+      {/* Hero Section */}
+      <section className="relative bg-black py-24 border-b border-gold/10">
+        <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,11 +106,11 @@ export default function ServicesPage() {
               <div className="w-12 h-0.5 bg-gold"></div>
               <span className="text-gold text-sm font-semibold tracking-wider uppercase">Our Expertise</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-dark leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
               Comprehensive <br />
               <span className="font-bold text-gold">Trading &amp; Development</span> Services
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+            <p className="text-gray-400 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
               Twelve integrated services spanning international trade, strategic procurement, 
               supply chain management, and business development across global markets.
             </p>
@@ -131,8 +132,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* Services Grid */}
+      <section className="bg-black-2 py-20">
+        <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,7 +142,7 @@ export default function ServicesPage() {
             className="text-center mb-16"
           >
             <span className="text-gold text-sm font-semibold tracking-wider uppercase">What We Offer</span>
-            <h2 className="text-3xl md:text-4xl font-light text-dark mt-2">
+            <h2 className="text-3xl md:text-4xl font-light text-white mt-2">
               Our <span className="font-bold text-gold">Service Categories</span>
             </h2>
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
@@ -155,25 +157,25 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.04 }}
-                className="group relative bg-white border border-gray-200 rounded-sm p-8 hover:border-gold hover:shadow-xl transition-all duration-300"
+                className="group relative bg-black border border-gold/10 rounded-sm p-8 hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300"
               >
                 <div className="absolute top-4 right-4">
-                  <span className="text-xs font-medium text-gray-400 bg-gray-50 px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-gray-500 bg-black-2 px-3 py-1 rounded-full border border-gold/10">
                     {service.category}
                   </span>
                 </div>
 
-                <div className="text-5xl font-light text-gray-100 group-hover:text-gold/20 transition-colors duration-300">
+                <div className="text-5xl font-light text-gray-800 group-hover:text-gold/20 transition-colors duration-300">
                   {service.id}
                 </div>
 
                 <div className="text-3xl mb-4 mt-2">{service.icon}</div>
 
-                <h3 className="text-lg font-semibold text-dark mb-3 group-hover:text-gold transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-gold transition-colors duration-300">
                   {service.name}
                 </h3>
 
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <p className="text-gray-400 text-sm leading-relaxed">
                   {service.description}
                 </p>
 
@@ -184,8 +186,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-lightGray py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* Why Choose Us */}
+      <section className="bg-black py-20 border-y border-gold/10">
+        <div className="container-premium">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -194,32 +197,32 @@ export default function ServicesPage() {
           >
             <div className="text-center mb-14">
               <span className="text-gold text-sm font-semibold tracking-wider uppercase">Why SI88 Limited</span>
-              <h2 className="text-3xl md:text-4xl font-light text-dark mt-2">
+              <h2 className="text-3xl md:text-4xl font-light text-white mt-2">
                 The <span className="font-bold text-gold">SI88 Advantage</span>
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-black-2 p-8 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-gold/10 hover:shadow-xl transition-shadow">
                 <div className="text-gold text-3xl mb-4">🌐</div>
-                <h4 className="text-lg font-semibold text-dark mb-3">Global Network</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <h4 className="text-lg font-semibold text-white mb-3">Global Network</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">
                   Extensive network of trusted suppliers, manufacturers, distributors, and strategic partners across international markets.
                 </p>
               </div>
 
-              <div className="bg-white p-8 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-black-2 p-8 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-gold/10 hover:shadow-xl transition-shadow">
                 <div className="text-gold text-3xl mb-4">🤝</div>
-                <h4 className="text-lg font-semibold text-dark mb-3">Trusted Partnerships</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <h4 className="text-lg font-semibold text-white mb-3">Trusted Partnerships</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">
                   Built on integrity, professionalism, and a commitment to long-term relationships that create enduring value.
                 </p>
               </div>
 
-              <div className="bg-white p-8 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-black-2 p-8 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-gold/10 hover:shadow-xl transition-shadow">
                 <div className="text-gold text-3xl mb-4">⭐</div>
-                <h4 className="text-lg font-semibold text-dark mb-3">Excellence &amp; Innovation</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <h4 className="text-lg font-semibold text-white mb-3">Excellence &amp; Innovation</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">
                   Pursuing excellence relentlessly while embracing innovation to create lasting value for our partners and clients.
                 </p>
               </div>
@@ -228,36 +231,29 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-dark text-white py-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
+      {/* Call to Action */}
+      <section className="bg-black-2 text-white py-20">
+        <div className="container-premium text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <span className="text-gold text-sm font-semibold tracking-wider uppercase">Get Started</span>
-            <h2 className="text-3xl md:text-4xl font-light mt-3 mb-4">
+            <h2 className="text-3xl md:text-4xl font-light mt-3 mb-4 text-white">
               Ready to <span className="font-bold text-gold">Partner</span> With Us?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
               Let&apos;s discuss how our comprehensive services can support your business objectives.
             </p>
             <Link href="/contact">
-              <button className="px-12 py-4 bg-gold text-dark font-semibold rounded-sm hover:bg-gold/90 transition-all tracking-wide">
+              <button className="px-12 py-4 bg-gold text-black font-semibold rounded-sm hover:bg-gold/90 transition-all tracking-wide">
                 Contact Our Team
               </button>
             </Link>
           </motion.div>
         </div>
       </section>
-
-      <footer className="bg-dark/95 text-white py-8 border-t border-gray-800">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2026 SI88 Limited. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }
