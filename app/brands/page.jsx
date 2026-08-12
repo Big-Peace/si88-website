@@ -61,10 +61,19 @@ export default function BrandsPage() {
     { name: 'SI88 Logistics', icon: Icons.Logistics, description: 'Supply chain & logistics division', status: 'Coming Soon' }
   ];
 
+  // Gallery Images
+  const galleryImages = [
+    { src: '/spec01.png', alt: 'Si Confidenci Eyewear Collection 1' },
+    { src: '/spec02.png', alt: 'Si Confidenci Eyewear Collection 2' },
+    { src: '/spec03.png', alt: 'Si Confidenci Eyewear Collection 3' },
+    { src: '/spec04.png', alt: 'Si Confidenci Eyewear Collection 4' },
+  ];
+
   return (
     <main className="min-h-screen bg-black pt-20">
       <Scene3D />
-      {/* Hero */}
+
+      {/* Hero Section */}
       <section className="relative bg-black py-24 border-b border-gold/10 overflow-hidden">
         <div className="container-premium">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
@@ -112,20 +121,31 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Brand Story */}
+      {/* Brand Story - WITH IMAGE (spec01.png) */}
       <section className="bg-black-2 py-20">
         <div className="container-premium">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="bg-black w-full aspect-[4/3] rounded-sm border-2 border-gold/30 flex items-center justify-center relative overflow-hidden">
-                <div className="text-center text-gray-400">
-                  <Image src="/SI-Confidency.png" alt="Si Confidenci" width={300} height={90} className="w-auto" style={{ height: 'auto', maxHeight: '70px' }} />
-                  <p className="text-sm text-gray-500 mt-4">Luxury Eyewear Collection</p>
-                  <p className="text-xs text-gray-600 mt-2">(Brand Visual Coming Soon)</p>
-                </div>
-              </div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden rounded-sm border border-gold/20"
+            >
+              <Image
+                src="/spec01.png"
+                alt="Si Confidenci Story"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+              />
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-6">
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
               <div className="w-16 h-0.5 bg-gold"></div>
               <h2 className="text-3xl md:text-4xl font-light text-white">The <span className="font-bold text-gold">Story</span> Behind Si Confidenci</h2>
               <p className="text-gray-400 leading-relaxed">Si Confidenci is SI88 Limited&apos;s flagship luxury eyewear brand, conceived and developed in the Philippines with a vision of becoming an internationally recognized premium fashion label.</p>
@@ -157,14 +177,53 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* Global Expansion */}
+      {/* Gallery Section */}
       <section className="bg-black-2 py-20 border-y border-gold/10">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-14"
+          >
+            <span className="eyebrow">Collection Gallery</span>
+            <h2 className="text-3xl md:text-4xl font-light text-white mt-2">Si Confidenci <span className="font-bold text-gold">Collection</span></h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Explore the elegance and craftsmanship behind our luxury eyewear.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-sm border border-gold/10 hover:border-gold transition-all duration-300 hover:shadow-gold/10 hover:shadow-xl"
+              >
+                <div className="aspect-square relative overflow-hidden">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Expansion */}
+      <section className="bg-black py-20 border-b border-gold/10">
         <div className="container-premium">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto">
             <div className="text-center mb-12"><span className="eyebrow">Global Vision</span><h2 className="text-3xl md:text-4xl font-light text-white mt-2"><span className="font-bold text-gold">Expansion</span> Strategy</h2><p className="text-gray-500 mt-4 max-w-2xl mx-auto">Bringing Si Confidenci to carefully selected international markets.</p></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {expansionPlans.map((plan, index) => (
-                <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-black p-6 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-gold/10 hover:shadow-xl transition-shadow">
+                <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-black-2 p-6 rounded-sm border-l-4 border-gold shadow-sm hover:shadow-gold/10 hover:shadow-xl transition-shadow">
                   <span className="text-gold text-2xl font-light">0{index + 1}</span>
                   <p className="text-gray-300 font-medium">{plan}</p>
                 </motion.div>
@@ -175,7 +234,7 @@ export default function BrandsPage() {
       </section>
 
       {/* Future Divisions */}
-      <section className="bg-black py-20 border-t border-gold/10">
+      <section className="bg-black-2 py-20 border-t border-gold/10">
         <div className="container-premium">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
@@ -186,7 +245,7 @@ export default function BrandsPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {futureDivisions.map((division, index) => (
-                <motion.div key={division.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-black-2 p-8 rounded-sm border border-gold/10 text-center hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300 group">
+                <motion.div key={division.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-black p-8 rounded-sm border border-gold/10 text-center hover:border-gold hover:shadow-gold/10 hover:shadow-xl transition-all duration-300 group">
                   <div className="flex justify-center mb-3">{division.icon()}</div>
                   <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-gold transition-colors">{division.name}</h4>
                   <p className="text-gray-400 text-sm leading-relaxed">{division.description}</p>
@@ -199,7 +258,7 @@ export default function BrandsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-black-2 py-20 border-t border-gold/10">
+      <section className="bg-black py-20 border-t border-gold/10">
         <div className="container-premium text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <span className="eyebrow">Partnership Opportunities</span>
