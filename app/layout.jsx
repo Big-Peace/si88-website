@@ -7,7 +7,6 @@ import Scene3D from "./components/Scene3D";
 import PageTransition from "./components/PageTransition";
 import { Inter, Fraunces } from 'next/font/google';
 
-// Font configuration
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -46,9 +45,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <head>
-        {/* Favicon - ADD THIS */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        {/* Favicon with version query to force refresh */}
+        <link rel="icon" href="/favicon.ico?v=2" />
+        <link rel="apple-touch-icon" href="/favicon.ico?v=2" />
         <meta name="theme-color" content="#0a0a0b" />
       </head>
       <body suppressHydrationWarning>
