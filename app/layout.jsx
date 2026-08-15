@@ -24,7 +24,7 @@ const fraunces = Fraunces({
 
 export const metadata = {
   title: "SI88 Limited - Corporate 3D Website | Global Trade & Brand Development",
-  description: "SI88 Limited is an international trading and brand development company connecting markets across Africa, Asia, and the global marketplace. Building value across industries through excellence, innovation, and long-term growth.",
+  description: "SI88 Limited is an international trading and brand development company connecting markets across Africa, Asia, and the global marketplace.",
   keywords: "international trading, brand development, global business, import export, strategic procurement, SI88 Limited, Africa business, global markets, corporate 3D website",
   openGraph: {
     title: "SI88 Limited - Corporate 3D Website",
@@ -46,8 +46,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <head>
+        {/* Favicon - ADD THIS */}
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="theme-color" content="#0a0a0b" />
       </head>
       <body suppressHydrationWarning>
