@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-// SVG Icons
 const Icons = {
   Vision: () => (
     <svg className="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,37 +168,45 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CEO Section */}
+      {/* CEO Section - Restructured (No Image) */}
       <section className="bg-black py-16 md:py-20">
         <div className="container-premium">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start"
+              className="text-center"
             >
-              <div className="md:col-span-1">
-                <div className="bg-black-2 w-full aspect-square rounded-sm border-2 border-gold/30 flex items-center justify-center">
-                  <div className="text-center text-gray-400">
-                    <div className="text-6xl mb-2">👤</div>
-                    <p className="text-sm">Founder Photo</p>
-                    <p className="text-xs text-gray-600">(Coming Soon)</p>
-                  </div>
+              <div className="w-20 h-0.5 bg-gold mx-auto mb-6"></div>
+              <span className="text-gold text-sm font-semibold tracking-wider uppercase">Leadership</span>
+              <h2 className="text-3xl md:text-4xl font-light text-white mt-4 mb-6">
+                Founder & <span className="font-semibold text-gold">Chief Executive Officer</span>
+              </h2>
+
+              <div className="max-w-3xl mx-auto">
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  The Founder and Chief Executive Officer of SI88 Limited is an entrepreneur driven by a long-term vision: to build an internationally respected enterprise that connects businesses, creates enduring brands, and contributes meaningfully to economic development across Africa and beyond.
+                </p>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  His leadership philosophy is founded on the belief that trust is the most valuable asset in business. Rather than pursuing short-term gains, he is committed to building institutions that endure for generations through integrity, disciplined execution, innovation, and strategic partnerships.
+                </p>
+                <div className="bg-gold/10 border border-gold/20 p-6 md:p-8 rounded-sm mb-8">
+                  <p className="text-gold font-medium italic text-lg">
+                    &quot;Great companies are not built by chasing opportunities—they are built by earning trust, solving meaningful problems, and creating value that outlives their founders.&quot;
+                  </p>
                 </div>
-              </div>
-              <div className="md:col-span-2">
-                <div className="w-20 h-0.5 bg-gold mb-6"></div>
-                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">
-                  Founder & <span className="font-semibold text-gold">Chief Executive Officer</span>
-                </h2>
-                <div className="space-y-6 text-gray-300 leading-relaxed mt-6">
-                  <p>The Founder and Chief Executive Officer of SI88 Limited is an entrepreneur driven by a long-term vision: to build an internationally respected enterprise that connects businesses, creates enduring brands, and contributes meaningfully to economic development across Africa and beyond.</p>
-                  <p>His leadership philosophy is founded on the belief that trust is the most valuable asset in business. Rather than pursuing short-term gains, he is committed to building institutions that endure for generations through integrity, disciplined execution, innovation, and strategic partnerships.</p>
-                  <p className="text-gold font-medium italic">&quot;Great companies are not built by chasing opportunities—they are built by earning trust, solving meaningful problems, and creating value that outlives their founders.&quot;</p>
-                </div>
-                <div className="mt-8 grid grid-cols-2 gap-3">
-                  {['Integrity above everything','Think globally, act responsibly','Build lasting partnerships','Pursue excellence relentlessly','Create value before seeking profit','Never stop innovating'].map((principle, i) => (
+
+                <h4 className="text-gold text-sm font-semibold tracking-wider uppercase mb-4">Leadership Principles</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto text-left">
+                  {[
+                    'Integrity above everything',
+                    'Think globally, act responsibly',
+                    'Build lasting partnerships',
+                    'Pursue excellence relentlessly',
+                    'Create value before seeking profit',
+                    'Never stop innovating'
+                  ].map((principle, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-gray-400">
                       <span className="text-gold">✓</span>
                       <span>{principle}</span>

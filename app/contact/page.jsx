@@ -88,7 +88,14 @@ export default function ContactPage() {
                         <h4 className="font-semibold text-gold text-sm">{info.title}</h4>
                         <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{info.details}</p>
                         {info.whatsapp && (
-                          <a href="https://wa.me/2348000000000?text=Hello%20SI88%20Limited" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-gold text-sm font-medium hover:underline">Chat Now →</a>
+                          <a 
+                            href="https://wa.me/639397917391?text=Hello%20SI88%20Limited"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block mt-2 text-gold text-sm font-medium hover:underline"
+                          >
+                            Chat Now →
+                          </a>
                         )}
                       </div>
                     </div>
@@ -171,7 +178,14 @@ export default function ContactPage() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">Quick <span className="font-bold text-gold">Response</span> Guaranteed</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">We&apos;ll get back to you within 24 hours. For urgent matters, reach us via WhatsApp.</p>
-            <a href="https://wa.me/2348000000000?text=Hello%20SI88%20Limited" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-10 py-4 bg-green-600 text-white font-semibold rounded-sm hover:bg-green-700 transition-all">💬 WhatsApp Us</a>
+            <a 
+              href="https://wa.me/639397917391?text=Hello%20SI88%20Limited"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-green-600 text-white font-semibold rounded-sm hover:bg-green-700 transition-all"
+            >
+              💬 WhatsApp Us
+            </a>
           </motion.div>
         </div>
       </section>
