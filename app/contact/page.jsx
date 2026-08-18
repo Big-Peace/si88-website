@@ -158,8 +158,9 @@ export default function ContactPage() {
                           value={formData.name} 
                           onChange={handleChange} 
                           required 
-                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
+                          className="w-full px-4 py-3 bg-black border border-gold/30 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
                           placeholder="Your full name" 
+                          style={{ backgroundColor: '#0a0a0b', color: '#ffffff' }}
                         />
                       </div>
                       <div>
@@ -170,8 +171,9 @@ export default function ContactPage() {
                           value={formData.email} 
                           onChange={handleChange} 
                           required 
-                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
+                          className="w-full px-4 py-3 bg-black border border-gold/30 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
                           placeholder="your@email.com" 
+                          style={{ backgroundColor: '#0a0a0b', color: '#ffffff' }}
                         />
                       </div>
                     </div>
@@ -182,8 +184,9 @@ export default function ContactPage() {
                         name="phone" 
                         value={formData.phone} 
                         onChange={handleChange} 
-                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
+                        className="w-full px-4 py-3 bg-black border border-gold/30 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
                         placeholder="+639397917391" 
+                        style={{ backgroundColor: '#0a0a0b', color: '#ffffff' }}
                       />
                     </div>
                     <div>
@@ -193,7 +196,8 @@ export default function ContactPage() {
                         value={formData.subject} 
                         onChange={handleChange} 
                         required 
-                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                        className="w-full px-4 py-3 bg-black border border-gold/30 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                        style={{ backgroundColor: '#0a0a0b', color: '#ffffff' }}
                       >
                         <option value="" className="text-white">Select a subject</option>
                         <option value="General Inquiry" className="text-white">General Inquiry</option>
@@ -212,8 +216,9 @@ export default function ContactPage() {
                         onChange={handleChange} 
                         required 
                         rows={5} 
-                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors resize-none text-white placeholder-gray-400" 
+                        className="w-full px-4 py-3 bg-black border border-gold/30 rounded-sm focus:border-gold focus:outline-none transition-colors resize-none text-white placeholder-gray-400" 
                         placeholder="Tell us how we can help..." 
+                        style={{ backgroundColor: '#0a0a0b', color: '#ffffff' }}
                       />
                     </div>
                     {error && <div className="text-red-500 text-sm">{error}</div>}
