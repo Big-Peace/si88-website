@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
 
 const Icons = {
   Location: () => (
@@ -29,6 +30,7 @@ const Icons = {
 };
 
 export default function ContactPage() {
+  const form = useRef();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -38,16 +40,25 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const result = await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+      console.log('Email sent!', result.text);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    } catch {
-      setError('Something went wrong. Please try again.');
+      form.current.reset();
+    } catch (error) {
+      console.error('Failed to send:', error);
+      setError('Failed to send. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -62,7 +73,6 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-black pt-20">
-      {/* Hero */}
       <section className="bg-black py-20 md:py-28 border-b border-gold/10">
         <div className="container-premium">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
@@ -73,7 +83,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Content */}
       <section className="bg-black-2 py-16 md:py-20">
         <div className="container-premium">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
@@ -119,7 +128,7 @@ export default function ContactPage() {
                     <button onClick={() => setIsSubmitted(false)} className="mt-6 px-6 py-2 bg-gold text-black font-semibold rounded-sm hover:bg-gold/90 transition-all">Send Another Message</button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form ref={form} onSubmit={sendEmail} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
@@ -132,7 +141,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" placeholder="+234 800 000 0000" />
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" placeholder="+639397917391" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">Subject *</label>
@@ -160,7 +169,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map */}
       <section className="bg-black py-16 border-t border-gold/10">
         <div className="container-premium">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-6xl mx-auto">
@@ -172,7 +180,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-black-2 text-white py-16 md:py-20 border-t border-gold/10">
         <div className="container-premium text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
