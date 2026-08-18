@@ -5,6 +5,9 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 
+// Initialize EmailJS with your Public Key
+emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+
 const Icons = {
   Location: () => (
     <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,6 +49,7 @@ export default function ContactPage() {
     setError('');
 
     try {
+      // sendForm(serviceID, templateID, formRef, publicKey)
       const result = await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
