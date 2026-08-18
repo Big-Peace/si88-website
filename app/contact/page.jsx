@@ -50,10 +50,10 @@ export default function ContactPage() {
 
     try {
       const result = await emailjs.sendForm(
-        'service_mxa3inc',      // Your Service ID
-        'template_wimjx2k',     // Your Template ID
+        'service_mxa3inc',
+        'template_wimjx2k',
         form.current,
-        'XG1hdhuY-v6Bw_4yB'     // Your Public Key
+        'XG1hdhuY-v6Bw_4yB'
       );
       console.log('Email sent!', result.text);
       setIsSubmitted(true);
@@ -68,10 +68,27 @@ export default function ContactPage() {
   };
 
   const contactInfo = [
-    { icon: Icons.Location, title: 'Visit Our Office', details: 'Road 8, House 16\nUdoka Housing Estate\nAwka, Anambra State\nNigeria' },
-    { icon: Icons.Email, title: 'Email Us', details: 'info@si88limited.com\nceo@si88limited.com\nsales@si88limited.com\npartnerships@si88limited.com' },
-    { icon: Icons.Phone, title: 'Call Us', details: 'Official Company Phone Number\nAvailable during business hours' },
-    { icon: Icons.WhatsApp, title: 'WhatsApp', details: 'Chat with us instantly\nAvailable 24/7', whatsapp: true },
+    { 
+      icon: Icons.Location, 
+      title: 'Visit Our Office', 
+      details: 'Road 8, House 16\nUdoka Housing Estate\nAwka, Anambra State\nNigeria' 
+    },
+    { 
+      icon: Icons.Email, 
+      title: 'Email Us', 
+      details: 'admin@si88limited.com\ninfo@si88limited.com'  // ← Only 2 emails
+    },
+    { 
+      icon: Icons.Phone, 
+      title: 'Call Us', 
+      details: '+639397917391'  // ← Added phone number
+    },
+    { 
+      icon: Icons.WhatsApp, 
+      title: 'WhatsApp', 
+      details: 'Chat with us instantly\nAvailable 24/7', 
+      whatsapp: true 
+    },
   ];
 
   return (
