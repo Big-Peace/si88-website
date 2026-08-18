@@ -76,12 +76,12 @@ export default function ContactPage() {
     { 
       icon: Icons.Email, 
       title: 'Email Us', 
-      details: 'admin@si88limited.com\ninfo@si88limited.com'  // ← Only 2 emails
+      details: 'admin@si88limited.com\ninfo@si88limited.com' 
     },
     { 
       icon: Icons.Phone, 
       title: 'Call Us', 
-      details: '+639397917391'  // ← Added phone number
+      details: '+639397917391' 
     },
     { 
       icon: Icons.WhatsApp, 
@@ -152,32 +152,69 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" placeholder="Your full name" />
+                        <input 
+                          type="text" 
+                          name="name" 
+                          value={formData.name} 
+                          onChange={handleChange} 
+                          required 
+                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
+                          placeholder="Your full name" 
+                        />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" placeholder="your@email.com" />
+                        <input 
+                          type="email" 
+                          name="email" 
+                          value={formData.email} 
+                          onChange={handleChange} 
+                          required 
+                          className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
+                          placeholder="your@email.com" 
+                        />
                       </div>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" placeholder="+639397917391" />
+                      <input 
+                        type="tel" 
+                        name="phone" 
+                        value={formData.phone} 
+                        onChange={handleChange} 
+                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white placeholder-gray-500" 
+                        placeholder="+639397917391" 
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">Subject *</label>
-                      <select name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-dark">
-                        <option value="">Select a subject</option>
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Partnership">Partnership Opportunity</option>
-                        <option value="Services">Service Request</option>
-                        <option value="Brand Collaboration">Brand Collaboration</option>
-                        <option value="Investment">Investment</option>
-                        <option value="Other">Other</option>
+                      <select 
+                        name="subject" 
+                        value={formData.subject} 
+                        onChange={handleChange} 
+                        required 
+                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors text-white"
+                      >
+                        <option value="" className="text-white">Select a subject</option>
+                        <option value="General Inquiry" className="text-white">General Inquiry</option>
+                        <option value="Partnership" className="text-white">Partnership Opportunity</option>
+                        <option value="Services" className="text-white">Service Request</option>
+                        <option value="Brand Collaboration" className="text-white">Brand Collaboration</option>
+                        <option value="Investment" className="text-white">Investment</option>
+                        <option value="Other" className="text-white">Other</option>
                       </select>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">Message *</label>
-                      <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors resize-none text-dark placeholder-gray-400" placeholder="Tell us how we can help..." />
+                      <textarea 
+                        name="message" 
+                        value={formData.message} 
+                        onChange={handleChange} 
+                        required 
+                        rows={5} 
+                        className="w-full px-4 py-3 bg-black-2 border border-gold/10 rounded-sm focus:border-gold focus:outline-none transition-colors resize-none text-white placeholder-gray-400" 
+                        placeholder="Tell us how we can help..." 
+                      />
                     </div>
                     {error && <div className="text-red-500 text-sm">{error}</div>}
                     <button type="submit" disabled={isSubmitting} className="w-full md:w-auto px-12 py-4 bg-gold text-black font-semibold rounded-sm hover:bg-gold/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed">{isSubmitting ? 'Sending...' : 'Send Message →'}</button>
